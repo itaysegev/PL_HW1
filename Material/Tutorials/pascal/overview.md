@@ -1,0 +1,347 @@
+# Pascal - Overview
+
+---
+
+## introduction
+
+* designed: 1968 by Niklaus Wirth
+* published: 1970
+* imperative, structural, procedural
+* static and strong typing
+* static binding
+* designed to be simple
+* we will use FreePascal
+
+---
+
+## a basic program
+
+```pascal
+program HelloWorld;
+{ Definitions are placed here - 
+  types, variables, procedures, functions, ...}
+begin
+    WriteLn('Hello, World!');
+    { More statements can be added here }
+end.
+```
+
+---
+
+## comments
+
+* multiline
+  * `{ ... }`
+  * `{* ... *}`
+  * `(* ... *)`
+* single line
+  * `// ...`
+
+---
+
+## input & output
+
+* `Write(1, 2, "hello")`
+* `WriteLn(x, y)`
+* `Read(x)`
+* `ReadLn(y)`
+
+---
+
+## builtin data types
+
+* `integer`
+* `boolean`
+* `real`
+* `char`
+
+---
+
+## enumerated types
+
+```pascal
+type Color = (Red, Green, Blue, Yellow);
+```
+
+enumerated types are ordered
+
+```pascal
+Red < Blue = true;
+ord(Yellow) = 3;
+succ(Red) = Green;
+pred(Blue) = Green
+```
+
+---
+
+## subrange types
+
+```pascal
+type Letter = 'A' .. 'Z';
+     Index = 3.. 8;
+     BasicColor = Red .. Blue;
+```
+
+---
+
+### set types
+
+```pascal
+type Rainbow = set of Color;
+```
+
+sets have many many functions to work with - union, intersection, etc.
+
+---
+
+## records
+
+```pascal
+type date = record
+        day: 1 .. 31;
+        month: (January, February, March, April, May, June,
+                July, August, September, October, November, December);
+        year: 1900 .. 2100
+     end;
+```
+
+to access a field use `.`:
+
+```pascal
+today.year
+```
+
+---
+
+## flow control - if
+
+```pascal
+if x < 2 then write(x);
+```
+
+the expression between `if` and `then` must be of type `boolean`
+
+```pascal
+if x < 2 then
+begin
+    write(x)
+end;
+```
+
+```pascal
+if x < 2 then
+    write(x) // no semicolon!
+else
+    write(y);
+```
+
+---
+
+## flow control - case
+
+```pascal
+case i of
+    1: write("A");
+    2: write("B");
+    3: write("C") // no semicolon!
+end
+```
+
+---
+
+## flow control - while
+
+```pascal
+while x < 5 do
+begin
+    read(x)
+end;
+```
+
+---
+
+## flow control - repeat
+
+```pascal
+repeat
+    read(x)
+until x > 5;
+```
+
+---
+
+## flow control - for
+
+```pascal
+for i := 1 to 10 do
+    WriteLn(i);
+```
+
+```pascal
+for i := 10 downto 1 do
+begin
+    WriteLn(i)
+end;
+```
+
+the final value of `i` is undefined
+
+---
+
+## arrays in pascal
+
+pascal arrays are defined as follows:
+
+> `array` **index-type** `of` **element-type**
+
+```pascal
+var A: array [1..5] of real;
+    pens: array [Red..Green] of
+        record
+            width: 1..3;
+            kind: (Regular, Bold)
+        end;
+```
+
+---
+
+## functions
+
+pascal functions always return a value
+
+```pascal
+function myFunc(a: integer, b: real): real;
+begin
+    myFunc := a * b // that's how you set the return value
+end
+```
+
+* functions cannot be called as standalone statements
+* in this example `a` and `b` are passed by-value
+
+---
+
+## procedures
+
+a function that doesn't return anything is a procedure
+
+```pascal
+procedure myProc(var a: boolean);
+begin
+    WriteLn("Hello, World!");
+    a := true
+end
+```
+
+`var` here means "pass by reference"
+
+---
+
+## a simple problem
+
+given a range of positive integers:
+
+* sum all numbers in range that divide by 3 or 5
+* print the result
+
+<!--vert-->
+
+### version 1
+
+```pascal
+program Sum;
+function sumOfMatching(s, e: integer): integer;
+    var sum, i: integer;
+    begin
+        sum := 0;
+        for i := s to e do
+            begin
+                if (i mod 3 = 0) or (i mod 5 = 0) then sum := sum + i
+            end;
+        sumOfMatching := sum
+    end;
+begin
+    WriteLn(sumOfMatching(1, 300))
+end.
+```
+
+<!--vert-->
+
+### version 2
+
+```pascal
+program Sum;
+type positiveInt = 1 .. MAXINT;
+function isMatching(i: integer): boolean;
+    begin isMatching := (i mod 3 = 0) or (i mod 5 = 0) end;
+function sumOfMatching(s, e: positiveInt): integer;
+    var sum, i: integer;
+    begin
+        sum := 0;
+        for i := s to e do
+            begin if isMatching(i) then sum := sum + i end;
+        sumOfMatching := sum
+    end;
+begin WriteLn(sumOfMatching(1, 300)) end.
+```
+
+<!--vert-->
+
+### version 3
+
+```pascal
+program Sum;
+type positiveInt = 1 .. MAXINT;
+function sumOfMatching(s, e: positiveInt): integer;
+    var sum, i: integer;
+    function isMatching(i: integer): boolean;
+        begin isMatching := (i mod 3 = 0) or (i mod 5 = 0) end;
+    begin
+        sum := 0;
+        for i := s to e do
+            begin if isMatching(i) then sum := sum + i end;
+        sumOfMatching := sum
+    end;
+begin WriteLn(sumOfMatching(1, 300)) end.
+```
+
+<!--vert-->
+
+### version 4
+
+```pascal
+program Sum;
+type positiveInt = 1 .. MAXINT;
+function sumOfMatching(s, e, d1, d2: positiveInt): integer;
+    var sum, i: integer;
+    function isMatching(i: integer): boolean;
+        begin isMatching := (i mod d1 = 0) or (i mod d2 = 0) end;
+    begin
+        sum := 0;
+        for i := s to e do
+            begin if isMatching(i) then sum := sum + i end;
+        sumOfMatching := sum
+    end;
+begin WriteLn(sumOfMatching(1, 300, 3, 5)) end.
+```
+
+<!--vert-->
+
+### version 5
+
+```pascal
+program Sum;
+type positiveInt = 1 .. MAXINT;
+     matcher = function (i: integer) : boolean;
+function foo(i: integer): boolean;
+    begin foo := (i mod 7 = 0) or (i mod 13 = 0) end;
+function sumOfMatching(s, e: positiveInt; isMatching: matcher): integer;
+    var sum, i: integer;
+    begin
+        sum := 0;
+        for i := s to e do
+            begin if isMatching(i) then sum := sum + i end;
+        sumOfMatching := sum
+    end;
+begin WriteLn(sumOfMatching(1, 300, @foo)) end.
+```
