@@ -18,7 +18,7 @@ install the kernel from <https://github.com/n-riesco/ijavascript>
 ## install
 
 ```bash
-git clone https://github.com/CS234319/safot.git
+git clone https://github.com/OpenUniversity/safot.git
 
 cd safot/reveal.js
 
