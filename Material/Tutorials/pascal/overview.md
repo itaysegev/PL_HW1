@@ -105,7 +105,7 @@ begin
 end.
 ```
 
-The result set contains all elements of *s1* and *s2*:
+the result set contains all elements of `s1` and `s2`:
 
 ```pascal
 s1 + s2 = [Red, Green, Blue, Yellow]
@@ -123,7 +123,7 @@ begin
 end.
 ```
 
-The result set contains all elements of *s1* that also belong to *s2*:
+the result set contains all elements of `s1` that also belong to `s2`:
 
 ```pascal
 s1 * s2 = [Green]
@@ -141,7 +141,7 @@ begin
 end.
 ```
 
-The result set contains all elements of *s1* and *s2* that belong **only** to one of them:
+the result set contains all elements of `s1` and `s2` that belong **only** to one of them:
 
 ```pascal
 s1 >< s2 = [Red, Blue, Yellow]
@@ -159,14 +159,12 @@ begin
 end.
 ```
 
-Checks set membership of an element in a set.
-
+checks set membership of an element in a set
 
 ```pascal
 Red in s1; { true }
 Red in s2; { false }
 ```
-
 
 ---
 
@@ -193,15 +191,15 @@ today.year
 
 ```pascal
 type Point = record
-		letter: char;
-		case UsePolar : boolean of 
-		
-		False : (X, Y, Z : Real);
-		True  : (R, theta, phi : Real);
-     end;
+        letter: char;
+        case UsePolar : boolean of 
+        
+        False : (X, Y, Z : Real);
+        True  : (R, theta, phi : Real);
+    end;
 ```
 
-The point record will have different fields based on the value of *UsePolar*.
+The `Point` record will have different fields based on the value of `UsePolar`.
 
 ---
 
@@ -292,7 +290,7 @@ A way to run over all elements in a set:
 ```pascal
 WriteLn('Color set S contains: ');
 for c := Red to Yellow do
-	if c in S then WriteLn(c)
+    if c in S then WriteLn(c)
 ```
 
 ---
