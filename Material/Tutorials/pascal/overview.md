@@ -8,7 +8,6 @@
 * published: 1970
 * imperative, structural, procedural
 * static and strong typing
-* static binding
 * designed to be simple
 * we will use FreePascal
 
@@ -78,7 +77,7 @@ pred(Blue) = Green
 
 ```pascal
 type Letter = 'A' .. 'Z';
-     Index = 3.. 8;
+     Index = 3 .. 8;
      BasicColor = Red .. Blue;
 ```
 
@@ -91,6 +90,83 @@ type Rainbow = set of Color;
 ```
 
 sets have many many functions to work with - union, intersection, etc.
+
+<!--vert-->
+
+#### union
+
+Consider these two sets:
+
+```pascal
+var s1, s2 : Rainbow;
+begin
+     s1 := [Red, Green];
+     s2 := [Green, Blue, Yellow]
+end.
+```
+
+The result set contains all elements of *s1* and *s2*:
+
+```pascal
+s1 + s2 = [Red, Green, Blue, Yellow]
+```
+
+<!--vert-->
+
+#### intersection
+
+```pascal
+var s1, s2 : Rainbow;
+begin
+     s1 := [Red, Green];
+     s2 := [Green, Blue, Yellow]
+end.
+```
+
+The result set contains all elements of *s1* that also belong to *s2*:
+
+```pascal
+s1 * s2 = [Green]
+```
+
+<!--vert-->
+
+#### symmetric difference
+
+```pascal
+var s1, s2 : Rainbow;
+begin
+     s1 := [Red, Green];
+     s2 := [Green, Blue, Yellow]
+end.
+```
+
+The result set contains all elements of *s1* and *s2* that belong **only** to one of them:
+
+```pascal
+s1 >< s2 = [Red, Blue, Yellow]
+```
+
+<!--vert-->
+
+#### operator in
+
+```pascal
+var s1, s2 : Rainbow;
+begin
+     s1 := [Red, Green];
+     s2 := [Green, Blue, Yellow]
+end.
+```
+
+Checks set membership of an element in a set.
+
+
+```pascal
+Red in s1; { true }
+Red in s2; { false }
+```
+
 
 ---
 
@@ -110,6 +186,22 @@ to access a field use `.`:
 ```pascal
 today.year
 ```
+
+<!--vert-->
+
+### variant records
+
+```pascal
+type Point = record
+		letter: char;
+		case UsePolar : boolean of 
+		
+		False : (X, Y, Z : Real);
+		True  : (R, theta, phi : Real);
+     end;
+```
+
+The point record will have different fields based on the value of *UsePolar*.
 
 ---
 
@@ -186,6 +278,23 @@ end;
 
 the final value of `i` is undefined
 
+<!--vert-->
+
+*for* supports integers, chars or any enumerated types:
+
+```pascal
+for i := 'a' to 'z' do
+     WriteLn(i)
+```
+
+A way to run over all elements in a set:
+
+```pascal
+WriteLn('Color set S contains: ');
+for c := Red to Yellow do
+	if c in S then WriteLn(c)
+```
+
 ---
 
 ## arrays in pascal
@@ -210,13 +319,12 @@ var A: array [1..5] of real;
 pascal functions always return a value
 
 ```pascal
-function myFunc(a: integer, b: real): real;
+function myFunc(a: integer; b: real): real;
 begin
     myFunc := a * b // that's how you set the return value
 end
 ```
 
-* functions cannot be called as standalone statements
 * in this example `a` and `b` are passed by-value
 
 ---
