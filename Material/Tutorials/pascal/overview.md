@@ -188,6 +188,22 @@ to access a field use `.`:
 today.year
 ```
 
+<!--vert-->
+
+### variant records
+
+```pascal
+type Point = record
+		letter: char;
+		case UsePolar : boolean of 
+		
+		False : (X, Y, Z : Real);
+		True  : (R, theta, phi : Real);
+     end;
+```
+
+The point record will have different fields based on the value of *UsePolar*.
+
 ---
 
 ## flow control - if
