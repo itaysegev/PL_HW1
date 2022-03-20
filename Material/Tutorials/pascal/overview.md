@@ -319,13 +319,12 @@ var A: array [1..5] of real;
 pascal functions always return a value
 
 ```pascal
-function myFunc(a: integer, b: real): real;
+function myFunc(a: integer; b: real): real;
 begin
     myFunc := a * b // that's how you set the return value
 end
 ```
 
-* functions cannot be called as standalone statements
 * in this example `a` and `b` are passed by-value
 
 ---
