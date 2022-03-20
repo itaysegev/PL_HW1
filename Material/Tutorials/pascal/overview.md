@@ -8,7 +8,6 @@
 * published: 1970
 * imperative, structural, procedural
 * static and strong typing
-* static binding
 * designed to be simple
 * we will use FreePascal
 
