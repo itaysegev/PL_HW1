@@ -6,11 +6,11 @@ from w2 import process_words
 def generate_test(file: str, s: str) -> None:
     with open(file, "w") as f:
         sets = process_words(s.split(";"))
-        common = sets[0]
+        common = sets[0].copy()
         for x in sets:
             common &= x
         f.write("\n".join(str(len(x)) for x in sets) + "\n")
-        f.write("\n".join(common) + ("\n" if common else ""))
+        f.write("\n".join(sorted(common)) + ("\n" if common else ""))
 
 
 def main():
