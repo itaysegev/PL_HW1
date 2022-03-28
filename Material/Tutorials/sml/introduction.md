@@ -758,11 +758,9 @@ $$gcd(m,n) = \begin{cases}n,m = 0&\\gcd(n mod m,m), m>0\end{cases}$$
 an imperative Python program:
 
 ```python
-def gcd(m, n):
+def gcd(m: int, n: int) -> int:
     while m != 0:
-        tmp = m
-        m = n % m
-        n = tmp
+        n, m = m, n % m
     return n
 ```
 
