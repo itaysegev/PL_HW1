@@ -12,6 +12,5 @@ RUN pip3 install jupyter-server jupyterlab
 RUN npm install -g npm@latest
 RUN npm install -g ijavascript
 RUN ijsinstall
-RUN git clone https://github.com/twyair/simple-ismlnj.git /usr/share/jupyter/kernels/smlnj
 
 EXPOSE 16788 16789
