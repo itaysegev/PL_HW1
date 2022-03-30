@@ -13,3 +13,5 @@ EXPOSE 16788
 COPY start-jupyter /
 
 WORKDIR /source
+
+RUN pip3 install markupsafe==2.0.1

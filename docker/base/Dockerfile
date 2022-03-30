@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM twyair/safot-smlnj:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
 
