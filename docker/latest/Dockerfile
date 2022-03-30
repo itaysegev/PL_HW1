@@ -4,7 +4,8 @@ WORKDIR /home/safot
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN ijsinstall
 COPY start.sh /home/safot
-RUN git clone https://github.com/OpenUniversity/safot.git
-RUN cd safot/reveal.js; npm install --production
+
+RUN git clone https://github.com/twyair/simple-ismlnj.git /usr/share/jupyter/kernels/smlnj
+
+RUN git clone https://github.com/OpenUniversity/safot.git && cd safot/reveal.js && npm install --production
