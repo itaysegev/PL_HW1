@@ -17,7 +17,7 @@
 
 * **lecture** \[7.4\]
 * **tutorial** \[andrey@4.4 yair@7.4\]
-    1. [SML - Functions](Tutorials/sml/functions.md) --- [slides](Tutorials/pdfs/sml-functions.md)
+    1. [SML - Functions](Tutorials/sml/functions.md) --- [slides](Tutorials/pdfs/sml-functions.pdf)
     2. [SML - Declarations](Tutorials/sml/declarations.md) --- [slides](Tutorials/pdfs/sml-declarations.pdf)
     3. [SML - Datatypes](Tutorials/sml/datatypes.md) --- [slides](Tutorials/pdfs/sml-datatypes.pdf)
 * **hw** [HW2](???) is published \[???\]
