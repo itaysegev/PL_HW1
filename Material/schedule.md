@@ -5,7 +5,7 @@
 * **lecture** \[24.3\]
 * **tutorial** \[andrey@21.3 yair@24.3\]
     1. [Pascal](Tutorials/pascal/overview.md) --- [slides](Tutorials/pdfs/pascal-overview.pdf)
-* **hw** [HW1](???) is published \[22.3\]
+* **hw** [HW1](https://docs.google.com/document/d/1jiazWRVat8_s6h3Dlg7mN0f1PccZ8X5yDYZRdbFBcPI) is published \[23.3\]
 
 ## week 2
 
@@ -20,7 +20,7 @@
     1. [SML - Functions](Tutorials/sml/functions.md) --- [slides](Tutorials/pdfs/sml-functions.pdf)
     2. [SML - Declarations](Tutorials/sml/declarations.md) --- [slides](Tutorials/pdfs/sml-declarations.pdf)
     3. [SML - Datatypes](Tutorials/sml/datatypes.md) --- [slides](Tutorials/pdfs/sml-datatypes.pdf)
-* **hw** [HW2](???) is published \[???\]
+* **hw** [HW2](https://docs.google.com/document/d/1515_nIyx8Z2J_2niRnyCpaAUuN9iSzOC8m0chZQXICU) is published \[06.04\]
 
 ## week 4
 
@@ -35,7 +35,7 @@
     1. [SML - Modules](Tutorials/sml/modules.md) --- [slides](Tutorials/pdfs/sml-modules.pdf)
     2. [SML - Exceptions](Tutorials/sml/exceptions.md) --- [slides](Tutorials/pdfs/sml-exceptions.pdf)
     3. [SML - References](Tutorials/sml/refs.md) --- [slides](Tutorials/pdfs/sml-refs.pdf)
-* **hw** [HW3](???) is published \[???\]
+* **hw** [HW3](https://docs.google.com/document/d/1o20_nNenOnypc5re7Ih4uGSzpd-IEpg1OyaEl8sJmpI) is published \[28.04\]
 
 ## week 6
 
