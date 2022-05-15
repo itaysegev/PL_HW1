@@ -47,7 +47,7 @@
 
 * **lecture** \[19.5\]
 * **tutorial** \[andrey@16.5 yair@19.5\]
-* **hw** [HW4](???) is published \[???\]
+* **hw** [HW4](https://docs.google.com/document/d/1EV14_TWFmun95uDO93XW-2lmSouWvOn1scTEZsVlE1E) is published \[15.05\]
 
 ## week 8
 
