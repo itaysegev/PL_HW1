@@ -22,13 +22,19 @@ function generate_slides(dir, template) {
         files.forEach((file, _index) => {
             if (file.endsWith(".md")) {
                 const name = file.substring(0, file.length - 3);
-                const html = template({ tutorial_name: name, sub: dir, port: argv.portjupyter, });
-                fs.writeFile(`${OUTPUT_DIR}/${dir}-${name}.html`, html, (err) => {
+                const html = template({ tutorial_name: name, sub: dir, host: argv.ip || "localhost", port: argv.portjupyter, });
+                fs.mkdir(`${OUTPUT_DIR}/${dir}`, {recursive: true}, (err) => {
                     if (err) {
                         console.error(err);
                         process.exit(1);
                     }
-                });
+                    fs.writeFile(`${OUTPUT_DIR}/${dir}/${name}.html`, html, (err) => {
+                        if (err) {
+                            console.error(err);
+                            process.exit(1);
+                        }
+                    })
+                })
             }
         });
     });

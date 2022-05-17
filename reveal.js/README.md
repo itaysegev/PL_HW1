@@ -15,6 +15,10 @@ install the kernel from <https://github.com/twyair/simple-ismlnj>
 
 install the kernel from <https://github.com/n-riesco/ijavascript>
 
+## prolog jupyter kernel
+
+install the kernel from <https://github.com/whitomtit/jswipl>
+
 ## install
 
 ```bash

@@ -33,12 +33,11 @@ length([_|Tail], N) :-
 ```
 
 ```prolog
-length([a, b, [c, d], e], N).
-% N = 4.
+?- length([a, b, [c, d], e], N).
 
-length(L, 4).
-% L = [_10798, _10804, _10810, _10816].
+?- length(L, 4).
 ```
+<!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
 
 <!--vert-->
 
