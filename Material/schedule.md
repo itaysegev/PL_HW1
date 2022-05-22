@@ -47,27 +47,27 @@
 
 * **lecture** \[19.5\]
 * **tutorial** \[andrey@16.5 yair@19.5\]
+    1. [Prolog - Introduction](Tutorials/prolog/introduction.md) --- [slides](Tutorials/pdfs/prolog-introduction.pdf)
 * **hw** [HW4](https://docs.google.com/document/d/1EV14_TWFmun95uDO93XW-2lmSouWvOn1scTEZsVlE1E) is published \[15.05\]
 
 ## week 8
 
 * **lecture** \[24.5 yom matkonet\]
 * **tutorial** \[andrey@23.5 yair@24.5\]
-    1. [Prolog - Introduction](Tutorials/prolog/introduction.md) --- [slides](Tutorials/pdfs/prolog-introduction.pdf)
+    1. [Prolog - Lists](Tutorials/prolog/lists.md) --- [slides](Tutorials/pdfs/prolog-lists.pdf)
+    2. [Prolog - CLP(FD)](Tutorials/prolog/clp.md) --- [slides](Tutorials/pdfs/prolog-clp.pdf)
 
 ## week 9
 
 * **lecture** \[2.6\]
 * **tutorial** \[andrey@30.5 yair@2.6\]
-    1. [Prolog - Lists](Tutorials/prolog/lists.md) --- [slides](Tutorials/pdfs/prolog-lists.pdf)
-    2. [Prolog - CLP(FD)](Tutorials/prolog/clp.md) --- [slides](Tutorials/pdfs/prolog-clp.pdf)
+    1. [Prolog - Control Predicates](Tutorials/prolog/control-predicates.md) --- [slides](Tutorials/pdfs/prolog-control-predicates.pdf)
 * **hw** [HW5](???) is published \[???\]
 
 ## week 10
 
 * **lecture** \[9.6\]
 * **tutorial** \[andrey@6.5 yair@9.6\]
-    1. [Prolog - Control Predicates](Tutorials/prolog/control-predicates.md) --- [slides](Tutorials/pdfs/prolog-control-predicates.pdf)
 
 ## week 11
 
