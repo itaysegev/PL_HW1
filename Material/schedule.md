@@ -68,20 +68,20 @@
 
 * **lecture** \[9.6\]
 * **tutorial** \[andrey@6.5 yair@9.6\]
+    1. [Prolog - Exam Questions](Tutorials/prolog/exam-questions.md)
 
 ## week 11
 
 * **lecture** \[16.6\]
 * **tutorial** \[andrey@13.6 yair@16.6\]
-    1. [More Prolog](???)
+    1. [Lexical and Dynamic Scoping](Tutorials/theory/scoping.md) --- [slides](Tutorials/pdfs/theory-scoping.pdf)
+    2. [Python Generators](Tutorials/python/generators.md) --- [slides](Tutorials/pdfs/slides/python-generators.pdf)
 * **hw** [HW6](???) is published \[???\]
 
 ## week 12
 
 * **lecture** \[23.6\]
 * **tutorial** \[andrey@20.6 yair@23.6\]
-    1. [Lexical and Dynamic Scoping](Tutorials/theory/scoping.md) --- [slides](Tutorials/pdfs/theory-scoping.pdf)
-    2. [Python Generators](Tutorials/python/generators.md) --- [slides](Tutorials/pdfs/slides/python-generators.pdf)
 
 ## week 13
 
