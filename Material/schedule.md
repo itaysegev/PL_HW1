@@ -75,7 +75,8 @@
 * **lecture** \[16.6\]
 * **tutorial** \[andrey@13.6 yair@16.6\]
     1. [Lexical and Dynamic Scoping](Tutorials/theory/scoping.md) --- [slides](Tutorials/pdfs/theory-scoping.pdf)
-    2. [Python Generators](Tutorials/python/generators.md) --- [slides](Tutorials/pdfs/slides/python-generators.pdf)
+    2. [Python Generators](Tutorials/python/generators.md) --- [slides](Tutorials/pdfs/python-generators.pdf)
+    3. [RTTI](Tutorials/pdfs/RTTI.pdf) --- [slides](Tutorials/pdfs/RTTI.pdf)
 * **hw** [HW6](???) is published \[???\]
 
 ## week 12
