@@ -173,3 +173,108 @@ mergeSort(L, R) :-
     merge(LLS, LRS, R).
 ```
 <!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
+
+---
+
+### question 4
+
+the predicate `edge/3` defines a weighted graph.
+
+`edge(X,Y,N)` is true iff there's an edge from `X` to `Y` with weight `N`.
+
+define `path/4`. `path(X,Y,P,N)` is true iff `P` is a path from `X` to `Y` with weight `N`.
+
+```prolog
+edge(a, b, 2)
+?- path(a, a, [a], 0).
+true.
+?- path(a, b, P, N).
+P = [a, b], N = 2.
+```
+
+<!--vert-->
+
+```prolog
+```
+<!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
+
+<!--vert-->
+
+```prolog
+path(X, X, [X], 0).
+path(X, Y, P, N) :-
+    X \= Y,
+    path(X, Z, PX, NX),
+    path(Z, Y, PY, NY),
+    append(PX, PY, P),
+    N is NX + NY.
+.
+```
+<!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
+
+<!--vert-->
+
+define `cycle/1`. `cycle(X)` is true iff there's a cycle that goes through `X`.
+
+```prolog
+```
+<!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
+
+<!--vert-->
+
+```prolog
+cycle(X) :- path(X, X, P, _), length(P, N), N > 1.
+```
+<!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
+
+---
+
+### question 5
+
+implement `is_prime/1`.
+
+```prolog
+```
+<!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
+
+<!--vert-->
+
+```prolog
+is_prime(2).
+is_prime(P) :-
+    P > 2, \+ divisible(P,2).  
+
+divisible(N,L) :- N mod L =:= 0.
+divisible(N,L) :-
+    L * L < N, L2 is L + 1, divisible(N,L2).
+```
+<!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
+
+<!--vert-->
+
+Goldbach's conjecture says that every positive even number greater than 2 is the sum of two prime numbers.
+
+<!--vert-->
+
+implement `goldbach/3`.
+
+* `goldbach(A,B,S)` is true iff `A+B=S`, `A` and `B` are prime numbers and `S` is an even number.
+
+* either `S` is concrete or `A` and `B` are concrete
+
+<!--vert-->
+
+```prolog
+```
+<!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
+
+<!--vert-->
+
+```prolog
+:- use_module(library(clpfd)).
+goldbach(A,B,S) :-
+    A #>= 2, A #< S, A + B #= S , A #=< B,
+    label([A, B, S]),
+    is_prime(A), is_prime(B).
+```
+<!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
