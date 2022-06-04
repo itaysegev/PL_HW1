@@ -278,3 +278,77 @@ goldbach(A,B,S) :-
     is_prime(A), is_prime(B).
 ```
 <!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
+
+<!--vert-->
+
+---
+
+### question 6
+
+how can a knight jump on an NxN chessboard in such a way that it visits every square exactly once?
+
+<!--vert-->
+
+```prolog
+jump_dist(1,2).
+jump_dist(2,1).
+jump_dist(2,-1).
+jump_dist(1,-2).
+jump_dist(-1,-2).
+jump_dist(-2,-1).
+jump_dist(-2,1).
+jump_dist(-1,2).
+```
+<!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
+
+<!--vert-->
+
+define `jump(N,A/B,C/D)` such that there's a jump from `A/B` to `C/D` on an NxN board
+
+```prolog
+```
+<!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
+
+<!--vert-->
+
+```prolog
+jump(N,A/B,C/D) :- 
+   jump_dist(X,Y), 
+   C is A+X, C > 0, C =< N,
+   D is B+Y, D > 0, D =< N.
+```
+<!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
+
+<!--vert-->
+
+define `knights(N,Ks)` such that `Ks` is a valid knight's tour on an NxN chessboard
+
+```prolog
+?- knights(5, Ks).
+Ks = [1/5, 3/4, 5/5, 4/3, 5/1, 3/2, 1/3, 2/5, 4/4, 5/2, 3/1, 1/2,
+2/4, 4/5, 5/3, 4/1, 2/2, 1/4, 3/3, 2/1, 4/2, 5/4, 3/5, 2/3, 1/1].
+
+?- knights(4, Ks).
+false.
+```
+
+<!--vert-->
+
+```prolog
+```
+<!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
+
+<!--vert-->
+
+```prolog
+knights(N,Knights) :-
+    M is N*N-1, knights(N,M,[1/1],Knights).
+knights(_,0,Knights,Knights).
+knights(N,M,Visited,Knights) :-
+   Visited = [X/Y|_],
+   jump(N,X/Y,U/V),
+   \+ member(U/V,Visited),
+   M1 is M-1,
+   knights(N,M1,[U/V|Visited],Knights).
+```
+<!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
