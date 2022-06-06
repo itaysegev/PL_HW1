@@ -139,7 +139,7 @@ implement `mergeSort/2`.
 
 <!--vert-->
 
-let's implement `merge/2` first:
+let's implement `merge/3` first:
 
 ```prolog
 ```
@@ -204,16 +204,10 @@ edge(a, b, 2).
 
 ```prolog
 path(X, X, [X], 0).
-path(X, Y, P, N) :-
-	sub_path(X, Y, P, N).
-sub_path(X, Y, [X, Y], N) :-
-    edge(X, Y, N).
-sub_path(X, Y, P, N) :-
-    X \= Y,
-    sub_path(X, Z, PX, NX),
-    sub_path(Z, Y, PY, NY),
-    append(PX, PY, P),
-    N is NX + NY.
+path(X, Y, [X|P], N) :-
+    edge(X, Z, N1),
+    path(Z, Y, P, N2),
+    N is N1 + N2.
 ```
 <!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
 
@@ -228,7 +222,9 @@ define `cycle/1`. `cycle(X)` is true if there's a cycle that goes through `X`.
 <!--vert-->
 
 ```prolog
-cycle(X) :- path(X, X, P, _).
+cycle(X) :- path(X, X, P, _), length(P, N), N > 1, !.
+% or
+cycle(X) :- edge(Y, X), path(X, Y, _, _), !.
 ```
 <!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
 
