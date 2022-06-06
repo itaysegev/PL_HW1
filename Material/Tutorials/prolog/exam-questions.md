@@ -10,7 +10,7 @@
 
 #### question 1.1
 
-write rules for the predicate `interleave/2` such that `interleave(L, R)` is true iff `L` is a list of lists and `R` is the lists in `L` interleaved.
+write rules for the predicate `interleave/2` such that `interleave(L, R)` is true if `L` is a list of lists and `R` is the lists in `L` interleaved.
 
 * you may assume that `L` is a concrete list of lists
 * example: `interleave([[p,l],[r,o],[o,g]], [p,r,o,l,o,g])`
@@ -36,7 +36,7 @@ interleave([[X|Xs]|Ys], [X|R]) :-
 
 #### question 1.2
 
-the predicates `cond1/1` and `cond2/1` take a concrete integer. implement `filter/2` such that `filter(Xs, Ys)` is true iff `Xs` is a list of integers and `Ys` is a list of all integers from `Xs` for which `cond1` is true and `cond2` is false.
+the predicates `cond1/1` and `cond2/1` take a concrete integer. implement `filter/2` such that `filter(Xs, Ys)` is true if `Xs` is a list of integers and `Ys` is a list of all integers from `Xs` for which `cond1` is true and `cond2` is false.
 
 * you may assume `Xs` is a concrete list of integers
 
@@ -64,16 +64,17 @@ filter([X|Xs], R) :- filter(Xs, R).
 
 #### question 2.1
 
-implement `dec_bin/2` such that `dec_bin(D, B)` is true iff `B` is the binary representation of `D`. (`D` is concrete)
+implement `dec_bin/2` such that `dec_bin(D, B)` is true if `B` is the binary representation of `D`. (`D` is concrete)
 
 example:
 
 ```prolog
 ?- dec_bin(12, K).
-K = '1100'.
+% K = '1100'.
 ```
+<!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
 
-(you may use `atom_concat/3` - `atom_concat(A, B, R)` holds iff `A`, `B` and `R` are atoms and `R = concat(A, B)`)
+(you may use `atom_concat/3` - `atom_concat(A, B, R)` holds if `A`, `B` and `R` are atoms and `R = concat(A, B)`)
 
 <!--vert-->
 
@@ -104,8 +105,9 @@ example:
 
 ```prolog
 ?- bin_dec('1100', K).
-K = 12.
+% K = 12.
 ```
+<!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
 
 <!--vert-->
 
@@ -130,9 +132,10 @@ bin_dec(B, N) :- atom_concat(A, '0', B), !, bin_dec(A, N1), N is 2 * N1.
 implement `mergeSort/2`.
 
 ```prolog
-mergeSort([56, 29, 35, 42, 15, 41, 75, 21], R).
-R = [15, 21, 29, 35, 41, 42, 56, 75].
+?- mergeSort([56, 29, 35, 42, 15, 41, 75, 21], R).
+% R = [15, 21, 29, 35, 41, 42, 56, 75].
 ```
+<!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
 
 <!--vert-->
 
@@ -180,17 +183,16 @@ mergeSort(L, R) :-
 
 the predicate `edge/3` defines a weighted graph.
 
-`edge(X,Y,N)` is true iff there's an edge from `X` to `Y` with weight `N`.
+`edge(X,Y,N)` is true if there's an edge from `X` to `Y` with weight `N`.
 
-define `path/4`. `path(X,Y,P,N)` is true iff `P` is a path from `X` to `Y` with weight `N`.
+define `path/4`. `path(X,Y,P,N)` is true if `P` is a path from `X` to `Y` with weight `N`.
 
 ```prolog
-edge(a, b, 2)
-?- path(a, a, [a], 0).
-true.
+edge(a, b, 2).
 ?- path(a, b, P, N).
-P = [a, b], N = 2.
+% P = [a, b], N = 2.
 ```
+<!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
 
 <!--vert-->
 
@@ -203,18 +205,21 @@ P = [a, b], N = 2.
 ```prolog
 path(X, X, [X], 0).
 path(X, Y, P, N) :-
+	sub_path(X, Y, P, N).
+sub_path(X, Y, [X, Y], N) :-
+    edge(X, Y, N).
+sub_path(X, Y, P, N) :-
     X \= Y,
-    path(X, Z, PX, NX),
-    path(Z, Y, PY, NY),
+    sub_path(X, Z, PX, NX),
+    sub_path(Z, Y, PY, NY),
     append(PX, PY, P),
     N is NX + NY.
-.
 ```
 <!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
 
 <!--vert-->
 
-define `cycle/1`. `cycle(X)` is true iff there's a cycle that goes through `X`.
+define `cycle/1`. `cycle(X)` is true if there's a cycle that goes through `X`.
 
 ```prolog
 ```
@@ -223,7 +228,7 @@ define `cycle/1`. `cycle(X)` is true iff there's a cycle that goes through `X`.
 <!--vert-->
 
 ```prolog
-cycle(X) :- path(X, X, P, _), length(P, N), N > 1.
+cycle(X) :- path(X, X, P, _).
 ```
 <!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
 
@@ -231,7 +236,7 @@ cycle(X) :- path(X, X, P, _), length(P, N), N > 1.
 
 ### question 5
 
-implement `is_prime/1`.
+implement `is_prime(X)`, wher `X` is a concrete integer
 
 ```prolog
 ```
@@ -258,7 +263,7 @@ Goldbach's conjecture says that every positive even number greater than 2 is the
 
 implement `goldbach/3`.
 
-* `goldbach(A,B,S)` is true iff `A+B=S`, `A` and `B` are prime numbers and `S` is an even number.
+* `goldbach(A,B,S)` is true if `A+B=S`, `A` and `B` are prime numbers and `S` is an even number.
 
 * either `S` is concrete or `A` and `B` are concrete
 
@@ -273,6 +278,7 @@ implement `goldbach/3`.
 ```prolog
 :- use_module(library(clpfd)).
 goldbach(A,B,S) :-
+	S mod 2 #= 0,
     A #>= 2, A #< S, A + B #= S , A #=< B,
     label([A, B, S]),
     is_prime(A), is_prime(B).
@@ -305,6 +311,8 @@ jump_dist(-1,2).
 
 define `jump(N,A/B,C/D)` such that there's a jump from `A/B` to `C/D` on an NxN board
 
+* either `A/B` are concrete or `C/D` are concrete
+
 ```prolog
 ```
 <!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
@@ -324,13 +332,14 @@ jump(N,A/B,C/D) :-
 define `knights(N,Ks)` such that `Ks` is a valid knight's tour on an NxN chessboard
 
 ```prolog
-?- knights(5, Ks).
-Ks = [1/5, 3/4, 5/5, 4/3, 5/1, 3/2, 1/3, 2/5, 4/4, 5/2, 3/1, 1/2,
-2/4, 4/5, 5/3, 4/1, 2/2, 1/4, 3/3, 2/1, 4/2, 5/4, 3/5, 2/3, 1/1].
+?- knights(5, Ks) {1}.
+% Ks = [1/5, 3/4, 5/5, 4/3, 5/1, 3/2, 1/3, 2/5, 4/4, 5/2, 3/1, 1/2,
+% 2/4, 4/5, 5/3, 4/1, 2/2, 1/4, 3/3, 2/1, 4/2, 5/4, 3/5, 2/3, 1/1].
 
 ?- knights(4, Ks).
-false.
+% false.
 ```
+<!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
 
 <!--vert-->
 
@@ -341,8 +350,9 @@ false.
 <!--vert-->
 
 ```prolog
+:- use_module(library(clpfd)).
 knights(N,Knights) :-
-    M is N*N-1, knights(N,M,[1/1],Knights).
+    X in 1..N, Y in 1..N, label([X, Y]), M is N*N-1, knights(N,M,[1/1],Knights).
 knights(_,0,Knights,Knights).
 knights(N,M,Visited,Knights) :-
    Visited = [X/Y|_],
