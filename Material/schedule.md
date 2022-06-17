@@ -83,9 +83,10 @@
 
 * **lecture** \[23.6\]
 * **tutorial** \[andrey@20.6 yair@23.6\]
+    1. [Lisp - Eval](Tutorials/theory/lisp.md) --- [slides](???)
+    2. [Exam Questions](Tutorials/pdfs/slides/exam-questions.pdf)
 
 ## week 13
 
 * **lecture** \[30.6\]
 * **tutorial** \[andrey@27.6 yair@30.6\]
-    1. [Exam Questions](Tutorials/pdfs/slides/exam-questions.pdf)

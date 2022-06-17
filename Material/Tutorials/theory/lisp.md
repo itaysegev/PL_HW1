@@ -155,7 +155,7 @@ implement `(LIST X1 X2 ...)`
     (EQ (CAR E) (QUOTE LIST))
     ((LABEL FLIST (LAMBDA (X A) (
         COND
-            ((NIL X) NIL)
+            ((NULL X) NIL)
             (T (CONS (EVAL (CAR X) A) (FLIST (CDR X) A)))
     ))) (CDR E) A)
 )
