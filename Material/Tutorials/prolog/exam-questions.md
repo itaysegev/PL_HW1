@@ -222,9 +222,9 @@ define `cycle/1`. `cycle(X)` is true if there's a cycle that goes through `X`.
 <!--vert-->
 
 ```prolog
-cycle(X) :- path(X, X, P, _), length(P, N), N > 1, !.
+cycle(X) :- path(X, X, P, _), length(P, N), N > 1.
 % or
-cycle(X) :- edge(Y, X), path(X, Y, _, _), !.
+cycle(X) :- edge(Y, X), path(X, Y, _, _).
 ```
 <!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
 
@@ -280,8 +280,6 @@ goldbach(A,B,S) :-
     is_prime(A), is_prime(B).
 ```
 <!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
-
-<!--vert-->
 
 ---
 
@@ -348,7 +346,7 @@ define `knights(N,Ks)` such that `Ks` is a valid knight's tour on an NxN chessbo
 ```prolog
 :- use_module(library(clpfd)).
 knights(N,Knights) :-
-    X in 1..N, Y in 1..N, label([X, Y]), M is N*N-1, knights(N,M,[1/1],Knights).
+    X in 1..N, Y in 1..N, label([X, Y]), M is N*N-1, knights(N,M,[X/Y],Knights).
 knights(_,0,Knights,Knights).
 knights(N,M,Visited,Knights) :-
    Visited = [X/Y|_],
