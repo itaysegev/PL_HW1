@@ -15,6 +15,7 @@
     "handlebars": "^4.7.7",
     "reveal.js": "^4.0.2",
     "thebe": "^0.8.0",
-    "yargs": "^17.2.1"
+    "yargs": "^17.2.1",
+    "@codemirror/legacy-modes/mode/commonlisp": "^5.0.0"
   }
 }
