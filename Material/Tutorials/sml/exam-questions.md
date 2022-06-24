@@ -10,11 +10,11 @@
 
 <!--vert-->
 
-![q1_1_a](../imgs/sml_exam_question_q1_1_a.png)
+![q1_1_a](../../imgs/sml_exam_question_q1_1_a.png)
 
 <!--vert-->
 
-![q1_1_b](../imgs/sml_exam_question_q1_1_b.png)
+![q1_1_b](../../imgs/sml_exam_question_q1_1_b.png)
 
 <!--vert-->
 
@@ -36,7 +36,7 @@ fun foldlUntil f pred init [] = init
 
 <!--vert-->
 
-![q1_2](../imgs/sml_exam_question_q1_2.png)
+![q1_2](../../imgs/sml_exam_question_q1_2.png)
 
 <!--vert-->
 
@@ -59,7 +59,7 @@ end;
 
 <!--vert-->
 
-![q1_3](../imgs/sml_exam_question_q1_3.png)
+![q1_3](../../imgs/sml_exam_question_q1_3.png)
 
 <!--vert-->
 
@@ -84,11 +84,11 @@ fun optionalFoldl fTrue fFalse pred init l =
 
 <!--vert-->
 
-![q2](../imgs/sml_exam_question_q2.png)
+![q2](../../imgs/sml_exam_question_q2.png)
 
 <!--vert-->
 
-![q2_1](../imgs/sml_exam_question_q2_1.png)
+![q2_1](../../imgs/sml_exam_question_q2_1.png)
 
 <!--vert-->
 
@@ -100,7 +100,7 @@ End value: 11
 
 <!--vert-->
 
-![q2_2](../imgs/sml_exam_question_q2_2.png)
+![q2_2](../../imgs/sml_exam_question_q2_2.png)
 
 <!--vert-->
 
@@ -118,7 +118,7 @@ End value: 2
 
 <!--vert-->
 
-![q3_1](../imgs/sml_exam_question_q3_1.png)
+![q3_1](../../imgs/sml_exam_question_q3_1.png)
 
 <!--vert-->
 
@@ -130,7 +130,7 @@ fun f x y z = if x(e) then raise z(x) else raise e;
 
 <!--vert-->
 
-![q3_2](../imgs/sml_exam_question_q3_2.png)
+![q3_2](../../imgs/sml_exam_question_q3_2.png)
 
 <!--vert-->
 
@@ -147,7 +147,7 @@ f(5);
 
 <!--vert-->
 
-![q3_3](../imgs/sml_exam_question_q3_3.png)
+![q3_3](../../imgs/sml_exam_question_q3_3.png)
 
 <!--vert-->
 
@@ -158,7 +158,7 @@ fun g (f,x) y = fn (z,x) => if (y > x) then z x else f z;
 
 <!--vert-->
 
-![q3_4](../imgs/sml_exam_question_q3_4.png)
+![q3_4](../../imgs/sml_exam_question_q3_4.png)
 
 <!--vert-->
 
