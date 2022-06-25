@@ -2,16 +2,21 @@
 
 ## install dependencies
 
-NOTE: the slides were tested only with nodejs version 14
+see the following dockerfiles for reference: [base](/docker/base/Dockerfile) and [latest](/docker/latest/Dockerfile>)
+
+NOTE: the slides were tested only with nodejs 14 and python 3.7+
 
 ```bash
-sudo apt install smlnj ipython3 nodejs npm jupyter-notebook zlib1g-dev libgmp-dev libzmq5-dev git
-sudo pip3 install jupyter-server
+sudo apt install curl
+sudo curl -sL https://deb.nodesource.com/setup_14.x | bash -
+sudo apt install nodejs git python3-pip
+sudo pip3 install jupyter-server ipykernel
 ```
 
 ## sml jupyter kernel
 
-install the kernel from <https://github.com/twyair/simple-ismlnj>
+* install `smlnj`
+* install the kernel from <https://github.com/twyair/simple-ismlnj>
 
 ## javascript jupyter kernel
 
@@ -59,7 +64,3 @@ npm run jupyter-server &
 ## open slides
 
 go to <http://localhost:16788/>
-
-## TODO
-
-* [X] thebe: call `Reveal.layout()` when the output changes
