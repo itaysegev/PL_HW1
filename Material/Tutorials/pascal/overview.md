@@ -27,6 +27,49 @@ end.
 
 ---
 
+## built-in data types
+
+* `integer`
+* `boolean`
+* `real`
+* `char`
+* `string`
+
+---
+
+## variables
+
+> `var` **\<name\>** `:` **\<type\>**
+
+* Must be declared in the definitions section
+* Assign values using walrus operator (:=)
+
+<!--vert-->
+
+### variables usage example
+
+```pascal
+program HelloWorld;
+var str : string;
+begin
+    str := 'Hello, World!';
+    WriteLn(str);
+end.
+```
+
+<!--vert-->
+
+### multiple variables declaration
+
+```pascal
+var s1, s2 : string;
+
+var c1 : char;
+    b1 : boolean;
+```
+
+---
+
 ## comments
 
 * multiline
@@ -44,15 +87,6 @@ end.
 * `WriteLn(x, y)`
 * `Read(x)`
 * `ReadLn(y)`
-
----
-
-## builtin data types
-
-* `integer`
-* `boolean`
-* `real`
-* `char`
 
 ---
 
@@ -81,9 +115,14 @@ type Letter = 'A' .. 'Z';
      BasicColor = Red .. Blue;
 ```
 
+* Important note - boundries are not enforced
+
 ---
 
-### set types
+## set types
+> `type` **\<name\>** `=` `set` `of` **\<range type\>**
+
+for example:
 
 ```pascal
 type Rainbow = set of Color;
@@ -93,7 +132,7 @@ sets have many many functions to work with - union, intersection, etc.
 
 <!--vert-->
 
-#### union
+### union
 
 Consider these two sets:
 
@@ -113,7 +152,7 @@ s1 + s2 = [Red, Green, Blue, Yellow]
 
 <!--vert-->
 
-#### intersection
+### intersection
 
 ```pascal
 var s1, s2 : Rainbow;
@@ -131,7 +170,7 @@ s1 * s2 = [Green]
 
 <!--vert-->
 
-#### symmetric difference
+### symmetric difference
 
 ```pascal
 var s1, s2 : Rainbow;
@@ -149,7 +188,7 @@ s1 >< s2 = [Red, Blue, Yellow]
 
 <!--vert-->
 
-#### operator in
+### operator in
 
 ```pascal
 var s1, s2 : Rainbow;
@@ -168,42 +207,31 @@ Red in s2; { false }
 
 ---
 
-## records
+## arithmetic operators
+* `+`
+* `-`
+* `*`
+* `/`
+* `div` (integer division)
+* `mod`
+---
+## relational operators
 
-```pascal
-type date = record
-        day: 1 .. 31;
-        month: (January, February, March, April, May, June,
-                July, August, September, October, November, December);
-        year: 1900 .. 2100
-     end;
-```
-
-to access a field use `.`:
-
-```pascal
-today.year
-```
-
-<!--vert-->
-
-### variant records
-
-```pascal
-type Point = record
-        letter: char;
-        case UsePolar : boolean of 
-        
-        False : (X, Y, Z : Real);
-        True  : (R, theta, phi : Real);
-    end;
-```
-
-The `Point` record will have different fields based on the value of `UsePolar`.
-
+* `=` (equals)
+* `<>` (not equals)
+* `<`
+* `<=`
+* and so on...
 ---
 
-## flow control - if
+## logical operators
+
+* `or`
+* `and`
+* `not`
+
+---
+## control flow - if
 
 ```pascal
 if x < 2 then write(x);
@@ -227,7 +255,7 @@ else
 
 ---
 
-## flow control - case
+## control flow - case
 
 ```pascal
 case i of
@@ -239,7 +267,7 @@ end
 
 ---
 
-## flow control - while
+## control flow - while
 
 ```pascal
 while x < 5 do
@@ -250,7 +278,7 @@ end;
 
 ---
 
-## flow control - repeat
+## control flow - repeat
 
 ```pascal
 repeat
@@ -260,7 +288,7 @@ until x > 5;
 
 ---
 
-## flow control - for
+## control flow - for
 
 ```pascal
 for i := 1 to 10 do
@@ -294,12 +322,58 @@ for c := Red to Yellow do
 ```
 
 ---
+## records
+
+```pascal
+type date = record
+        day: 1 .. 31;
+        month: (January, February, March, April, May, June,
+                July, August, September, October, November, December);
+        year: 1900 .. 2100
+     end;
+```
+
+to access a field use `.`:
+
+```pascal
+today.year
+```
+
+<!--vert-->
+
+### variant records
+
+```pascal
+type Point = record
+        letter: char;
+        case UsePolar : boolean of
+            False : (X, Y, Z : Real);
+            True  : (R, theta, phi : Real);
+    end;
+```
+
+The `Point` record will have different fields based on the value of `UsePolar`.
+<!--vert-->
+
+### variant records usage example
+
+```pascal
+if (not p.UsePolar) then
+    r := CubicRoot(p.X*p.X + p.Y*p.Y + p.Z*p.Z)
+else
+    r := p.R;
+end.
+
+```
+
+---
 
 ## arrays in pascal
 
-pascal arrays are defined as follows:
 
 > `array` **index-type** `of` **element-type**
+
+for example:
 
 ```pascal
 var A: array [1..5] of real;
@@ -309,6 +383,50 @@ var A: array [1..5] of real;
             kind: (Regular, Bold)
         end;
 ```
+
+<!--vert-->
+
+### arrays usage example
+```pascal
+var A: array [1..5] of real;
+    pens: array [Red..Green] of
+        record
+            width: 1..3;
+            kind: (Regular, Bold)
+        end;
+```
+
+```pascal
+A[2] := 3.14;
+pens[Red].width := 2;
+
+```
+---
+
+## strings
+strings are treated as arrays of characters.
+* Access a character using `[]`, **using 1-based indexing**
+* `Length` is used to get a strings length
+
+
+<!--vert-->
+
+### strings example
+
+```pascal
+var s : string;
+    c : char;
+    i : integer;
+```
+
+```pascal
+s := 'Hello, World!';
+c := s[1]; { c = 'H' }
+i := Length(s); { i = '13' }
+s[i] := '?'; { s = 'Hello, World?' }
+
+```
+
 
 ---
 
@@ -432,22 +550,3 @@ begin WriteLn(sumOfMatching(1, 300, 3, 5)) end.
 ```
 
 <!--vert-->
-
-### version 5
-
-```pascal
-program Sum;
-type positiveInt = 1 .. MAXINT;
-     matcher = function (i: integer) : boolean;
-function foo(i: integer): boolean;
-    begin foo := (i mod 7 = 0) or (i mod 13 = 0) end;
-function sumOfMatching(s, e: positiveInt; isMatching: matcher): integer;
-    var sum, i: integer;
-    begin
-        sum := 0;
-        for i := s to e do
-            begin if isMatching(i) then sum := sum + i end;
-        sumOfMatching := sum
-    end;
-begin WriteLn(sumOfMatching(1, 300, @foo)) end.
-```
