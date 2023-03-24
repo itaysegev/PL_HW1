@@ -83,7 +83,7 @@ var c1 : char;
 
 ## input & output
 
-* `Write(1, 2, "hello")`
+* `Write(1, 2, 'hello')`
 * `WriteLn(x, y)`
 * `Read(x)`
 * `ReadLn(y)`
@@ -115,7 +115,7 @@ type Letter = 'A' .. 'Z';
      BasicColor = Red .. Blue;
 ```
 
-* Important note - boundries are not enforced
+* Important note - boundaries are not enforced
 
 ---
 
@@ -259,9 +259,9 @@ else
 
 ```pascal
 case i of
-    1: write("A");
-    2: write("B");
-    3: write("C") // no semicolon!
+    1: write('A');
+    2: write('B');
+    3: write('C') // no semicolon!
 end
 ```
 
@@ -452,7 +452,7 @@ a function that doesn't return anything is a procedure
 ```pascal
 procedure myProc(var a: boolean);
 begin
-    WriteLn("Hello, World!");
+    WriteLn('Hello, World!');
     a := true
 end
 ```
