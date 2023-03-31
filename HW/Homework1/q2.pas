@@ -1,7 +1,7 @@
 program PascalCyberAttack;
 
 type
-   ch_array = array[char] of 1..26;
+   ch_array = array['a'..'z'] of Integer;
 var
    new_hist: ch_array;
    old_hist: ch_array;
@@ -30,13 +30,14 @@ old_hist := SetHist(old_word);
 for c := 'a' to 'z' do
 begin
     both_hist[c] := new_hist[c] + old_hist[c];
-    if(new_hist[c] > 0 ) and (old_hist[c] > 0) then 
+    if(new_hist[c] > 0) and (old_hist[c] > 0) then
         llegal := false;
+      
 end;
 writeLn(llegal);
 for c := 'a' to 'z' do
 begin
-    if(both_hist[c] = 1) or (both_hist[c] >= 2) then
+    if(both_hist[c] > 0) then
         writeLn(c + ' ', both_hist[c]);
 end;
 end.
