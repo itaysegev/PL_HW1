@@ -202,9 +202,13 @@ The expression outputs the string "s a f 0 t", and is written in a compressed
 \begin_layout Enumerate
 
 \lang english
-The expression console.log(+!+[]+!+[], +!+[]+!+[]+!+[],+!+[]+!+[]+!+[]+!+[]+!+[]+
-!+[], +!+[]+!+[]+!+[],+!+[], +!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[])
- outputs 
+The expression
+\begin_inset Newline newline
+\end_inset
+
+ console.log(+!+[]+!+[], +!+[]+!+[]+!+[],+!+[]+!+[]+!+[]+!+[]+!+[]+!+[],
+ +!+[]+!+[]+!+[],+!+[], +!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]) outputs
+ 
 \begin_inset Quotes eld
 \end_inset
 
