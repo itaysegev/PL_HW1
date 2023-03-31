@@ -2,7 +2,10 @@ program PascalTriangle;
 uses Sysutils;
 type 
     ln = array [1 .. 100] of integer;
-
+{
+    Here you may write helper functions and procedures.
+    Please do.
+}
 procedure printLine(const line: ln);
 var j: integer;
 var str: string;
@@ -13,7 +16,7 @@ begin
         str += IntToStr(line[j]);
         str += ' ';
         j += 1;
-
+    until (j = high(line)) or (line[j] = 0);
     str := copy(str, low(str), length(str) - 1);
     WriteLn(str);
 end;
