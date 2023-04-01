@@ -218,6 +218,31 @@ The expression
 \begin_layout Subsection*
 
 \numeric on
+2.1
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+fun factorial n : int = if n = 1 then n else (factorial (n - 1)) * n;
+\end_layout
+
+\begin_layout Subsection*
+
+\numeric on
+2.2
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+fun fibonacci n : int = if n = 1 then 0 else if n = 2 then 1 else fibonacci(n
+ - 1) + fibonacci(n - 2);
+\end_layout
+
+\begin_layout Subsection*
+
+\numeric on
 3.1
 \end_layout
 
