@@ -1,19 +1,47 @@
 program PascalTriangle;
+uses Sysutils;
+type 
+    ln = array [1 .. 100] of integer;
 {
     Here you may write helper functions and procedures.
     Please do.
 }
+procedure printLine(const line: ln);
+var j: integer;
+var str: string;
+begin
+    j := low(line);
+    str := '';
+    repeat
+        str += IntToStr(line[j]);
+        str += ' ';
+        j += 1;
+    until (j = high(line)) or (line[j] = 0);
+    str := copy(str, low(str), length(str) - 1);
+    WriteLn(str);
+end;
+
+procedure nextLine(var line: ln);
+var j: integer;
+var prev_line: ln;
+begin
+    prev_line := line;
+    for j := (low(line) + 1) to high(line) do
+    begin
+        line[j] := prev_line[j - 1] + prev_line[j]
+    end;
+end;
 
 var n: integer;
-var line: array { Complete the array definition... }
+var line: ln;
+var i: integer;
 
 begin
-{ Initialize 'line' array }
-ReadLn(n);
-for i := 1 to n do
+    line[low(line)] := 1;
+    ReadLn(n);
+    for i := 1 to n do
     begin
-        {
-            Construct the new line and then print it.
-        }
+        printLine(line);
+        nextLine(line);
     end;
 end.
