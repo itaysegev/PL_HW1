@@ -1,0 +1,118 @@
+\documentclass{article}
+\usepackage{listings}
+
+\usepackage{xcolor}
+
+\definecolor{commentsColor}{rgb}{0.497495, 0.497587, 0.497464}
+\definecolor{keywordsColor}{rgb}{0.000000, 0.000000, 0.635294}
+\definecolor{stringColor}{rgb}{0.558215, 0.000000, 0.135316}
+
+\lstset{ %
+    backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+    basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+    breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+    breaklines=true,                 % sets automatic line breaking
+    captionpos=b,                    % sets the caption-position to bottom
+    commentstyle=\color{commentsColor}\textit,    % comment style
+    deletekeywords={...},            % if you want to delete keywords from the given language
+    escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+    extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+    frame=tb,                          % adds a frame around the code
+    keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+    keywordstyle=\color{keywordsColor}\bfseries,       % keyword style
+    language=Python,                 % the language of the code (can be overrided per snippet)
+    otherkeywords={*,...},           % if you want to add more keywords to the set
+    numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+    numbersep=5pt,                   % how far the line-numbers are from the code
+    numberstyle=\tiny\color{commentsColor}, % the style that is used for the line-numbers
+    rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+    showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+    showstringspaces=false,          % underline spaces within strings only
+    showtabs=false,                  % show tabs within strings adding particular underscores
+    stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+    stringstyle=\color{stringColor}, % string literal style
+    tabsize=2,                     % sets default tabsize to 2 spaces
+    title=\lstname,                  % show the filename of files included with \lstinputlisting; also try caption instead of title
+    columns=fixed                    % Using fixed column width (for e.g. nice alignment)
+}
+
+\title{%
+       236319 \\
+       Programming Languages \\
+       \large HW01 \\
+       \small Dry}
+\author{Itay Segev and Arad Reder}
+\date{April 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{}
+\subsection{}
+The expression outputs the string "s a f 0 t", and is written in a compressed and obfuscated style. This style is sometimes used in code
+golf, where the goal is to write code that is as short as possible, or in obfuscation challenges, where the goal is to make the code difficult
+to understand or reverse-engineer.
+\subsection{}
+The following command:
+\begin{lstlisting}
+console.log(+!+[]+!+[],
+            +!+[]+!+[]+!+[],
+            +!+[]+!+[]+!+[]+!+[]+!+[]+!+[],
+            +!+[]+!+[]+!+[],+!+[],
+            +!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[])
+\end{lstlisting}
+outputs \lstinline{2 3 6 3 1 9}.
+
+\section{}
+\subsection{}
+\begin{lstlisting}[language=Pascal]
+fun factorial n : int = if n = 1 then n else (factorial (n - 1)) * n;
+\end{lstlisting}
+
+\subsection{}
+\begin{lstlisting}[language=Pascal]
+fun fibonacci n : int = if n = 1 then 0 else if n = 2 then 1 else fibonacci(n - 1) + fibonacci(n - 2);
+\end{lstlisting}
+
+\section{}
+\subsection{}
+Both Pascal and C programming languages support the concept of enumerations, which allow you to define a set of named constants with
+underlying integer values. However, there are some differences in how enumerations are implemented and used in Pascal and C. Here are
+some of the main differences:
+\begin{description}
+    \item[Syntax:] In Pascal, you define an enumeration type using the "type" keyword, followed by the name of the type and the list of possible
+        values In C, you define an enumeration type using the "enum" keyword, followed by the name of the type and the list of possible values
+        (each separated by a comma).
+    \item[Default Values:] In Pascal, the first value in an enumeration list is assigned the value 0 by default, and each subsequent value is assigned
+        the next integer value. However, you can explicitly assign values to each member if you want. In C, the first value in an enumeration
+        list is assigned the value 0 by default, and each subsequent value is assigned the next integer value. However, you can explicitly assign
+        values to each member if you want.
+    \item[Scope:] In Pascal, enumeration types are defined at the same level as other types, such as records and arrays. They can be used in any
+        part of the program where a type is expected.In C, enumeration types are usually defined in the global scope (outside of any function),
+        and can be used in any part of the program where a type is expected. However, you can also define enumeration types within a function,
+        in which case they can only be used within that function.
+    \item[Type Safety:] In Pascal, enumeration types are distinct types that are not compatible with other types, even if they have the same under-
+        lying integer values. In C, enumeration types are represented as integers, and are compatible with other integer types.
+\end{description}
+
+\subsection{}
+In Pascal, a set type is a special type that represents a collection of distinct values of a given base type. There are some restrictions on set types
+in Pascal:
+\begin{enumerate}
+    \item The base type must be an ordinal type, which means it can be ordered and assigned integer values. This includes integer, char, boolean,
+        enumeration types, and subrange types.
+    \item The maximum number of elements in a set depends on the size of the base type. For example, if the base type is an enumeration with 8
+        values, the maximum number of elements in the set is 256 ($2^8$).
+    \item The elements of a set are represented as bits in memory, and the size of a set depends on the number of elements in the base type. For
+        example, a set of days of the week requires one byte of memory, since there are 7 elements.
+\end{enumerate}
+The restrictions on set types exist for several reasons:
+\begin{description}
+    \item[Efficiency:] By representing sets as bit patterns in memory, Pascal can perform set operations such as union and intersection using
+    \item[Type Safety:] By restricting sets to ordinal types, Pascal ensures that set operations are meaningful and well-defined.
+    \item[Compiler Compatibility:] The restrictions on sets were designed to ensure that Pascal programs could be compiled and executed on a
+        wide range of computer architectures and operating systems.
+\end{description}
+
+\end{document}
