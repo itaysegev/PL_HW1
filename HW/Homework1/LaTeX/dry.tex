@@ -88,7 +88,7 @@ Here are some of the restrictions (and their reasoning) on the \lstinline{set} t
 \begin{itemize}
     \item A \lstinline{set} cannot contain multiple elements of the same value. This is due to the fact that sets in Pascal are supposed to mimic mathematical sets, and mathematical sets are defined such that you cannot have the same element multiple times in a set.
         \begin{itemize}
-            \item A restriction that originates from this is that sets of any type are limited in size to the size of that type. e.g. boolean sets are restricted to having a maximum of 2 values (\lstinline{true} and \lstinline{false}).
+            \item A restriction that originates from this is that sets of any type are limited in size to the size of that type. e.g. boolean sets are restricted to having a maximum of 2 elements (\lstinline{true} and \lstinline{false}).
         \end{itemize}
     \item A \lstinline{set} can only contain members of a single type. Moreover, a set can only contain members of ordinal types with a range between 0 and 255, and so any set can contain at most 256 elements. This restriction stems from the implementation of sets in Pascal, as they are implemented as an array of bits, each indicating whether an element is or isn't a part of the set.
 \end{itemize}
