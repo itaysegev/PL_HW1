@@ -52,7 +52,7 @@
 \subsection{}
 The expression outputs the string "s a f 0 t", and is written in a compressed and obfuscated style. This style is sometimes used in code
 golf, where the goal is to write code that is as short as possible, or in obfuscation challenges, where the goal is to make the code difficult
-to understand or reverse-engineer.
+tnderstand or reverse-engineer.
 \subsection{}
 The following command:
 \begin{lstlisting}
@@ -77,42 +77,19 @@ fun fibonacci n : int = if n = 1 then 0 else if n = 2 then 1 else fibonacci(n - 
 
 \section{}
 \subsection{}
-Both Pascal and C programming languages support the concept of enumerations, which allow you to define a set of named constants with
-underlying integer values. However, there are some differences in how enumerations are implemented and used in Pascal and C. Here are
-some of the main differences:
-\begin{description}
-    \item[Syntax:] In Pascal, you define an enumeration type using the "type" keyword, followed by the name of the type and the list of possible
-        values In C, you define an enumeration type using the "enum" keyword, followed by the name of the type and the list of possible values
-        (each separated by a comma).
-    \item[Default Values:] In Pascal, the first value in an enumeration list is assigned the value 0 by default, and each subsequent value is assigned
-        the next integer value. However, you can explicitly assign values to each member if you want. In C, the first value in an enumeration
-        list is assigned the value 0 by default, and each subsequent value is assigned the next integer value. However, you can explicitly assign
-        values to each member if you want.
-    \item[Scope:] In Pascal, enumeration types are defined at the same level as other types, such as records and arrays. They can be used in any
-        part of the program where a type is expected.In C, enumeration types are usually defined in the global scope (outside of any function),
-        and can be used in any part of the program where a type is expected. However, you can also define enumeration types within a function,
-        in which case they can only be used within that function.
-    \item[Type Safety:] In Pascal, enumeration types are distinct types that are not compatible with other types, even if they have the same under-
-        lying integer values. In C, enumeration types are represented as integers, and are compatible with other integer types.
-\end{description}
+Here are some of the differences between enum in C and enum in Pascal:
+\begin{itemize}
+    \item In C, the enum type is weak, meaning you can treat any enum variable as if it was an integer, and so compare it to integers, increase and decrease it to your liking, etc... In Pascal however, enums are their own type, and so cannot be compared or treated as integers unless explicitly cast to the integer type (using the \lstinline{ord} function).
+    \item In C, since enums are treated as integers, they can also be assigned values that don't have any meaning for their enum type. In Pascal, the values of enum variables can only be within the enum's range, meaning you can't increase, decrease, or assign an enum variable outside of the range of values defined in the enum type.
+\end{itemize}
 
 \subsection{}
-In Pascal, a set type is a special type that represents a collection of distinct values of a given base type. There are some restrictions on set types
-in Pascal:
-\begin{enumerate}
-    \item The base type must be an ordinal type, which means it can be ordered and assigned integer values. This includes integer, char, boolean,
-        enumeration types, and subrange types.
-    \item The maximum number of elements in a set depends on the size of the base type. For example, if the base type is an enumeration with 8
-        values, the maximum number of elements in the set is 256 ($2^8$).
-    \item The elements of a set are represented as bits in memory, and the size of a set depends on the number of elements in the base type. For
-        example, a set of days of the week requires one byte of memory, since there are 7 elements.
-\end{enumerate}
-The restrictions on set types exist for several reasons:
-\begin{description}
-    \item[Efficiency:] By representing sets as bit patterns in memory, Pascal can perform set operations such as union and intersection using
-    \item[Type Safety:] By restricting sets to ordinal types, Pascal ensures that set operations are meaningful and well-defined.
-    \item[Compiler Compatibility:] The restrictions on sets were designed to ensure that Pascal programs could be compiled and executed on a
-        wide range of computer architectures and operating systems.
-\end{description}
-
+Here are some of the restrictions (and their reasoning) on the \lstinline{set} type in Pascal:
+\begin{itemize}
+    \item A \lstinline{set} cannot contain multiple elements of the same value. This is due to the fact that sets in Pascal are supposed to mimic mathematical sets, and mathematical sets are defined such that you cannot have the same element multiple times in a set.
+        \begin{itemize}
+            \item A restriction that originates from this is that sets of any type are limited in size to the size of that type. e.g. boolean sets are restricted to having a maximum of 2 values (\lstinline{true} and \lstinline{false}).
+        \end{itemize}
+    \item A \lstinline{set} can only contain members of a single type. Moreover, a set can only contain members of ordinal types with a range between 0 and 255, and so any set can contain at most 256 elements. This restriction stems from the implementation of sets in Pascal, as they are implemented as an array of bits, each indicating whether an element is or isn't a part of the set.
+\end{itemize}
 \end{document}
