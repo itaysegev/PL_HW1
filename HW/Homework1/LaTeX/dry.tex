@@ -50,9 +50,7 @@
 
 \section{}
 \subsection{}
-The expression outputs the string "s a f 0 t", and is written in a compressed and obfuscated style. This style is sometimes used in code
-golf, where the goal is to write code that is as short as possible, or in obfuscation challenges, where the goal is to make the code difficult
-tnderstand or reverse-engineer.
+The expression outputs the string "s a f 0 t". It is written in JSFuck, which is a style of writing JS code using only the following characters: \lstinline{()[]+!}.
 \subsection{}
 The following command:
 \begin{lstlisting}
@@ -68,12 +66,26 @@ outputs \lstinline{2 3 6 3 1 9}.
 \section{}
 \subsection{}
 \begin{lstlisting}[language=Pascal]
-fun factorial n : int = if n = 1 then n else (factorial (n - 1)) * n;
+fun factorial_aux n prod = 
+    if n = 1 then
+        prod
+    else
+        factorial_aux (n - 1) (prod * n);
+
+fun factorial n =
+    factorial_aux n 1;
 \end{lstlisting}
 
 \subsection{}
 \begin{lstlisting}[language=Pascal]
-fun fibonacci n : int = if n = 1 then 0 else if n = 2 then 1 else fibonacci(n - 1) + fibonacci(n - 2);
+fun fibonacci_aux n prev curr =
+    if n = 0 then
+        prev
+    else
+        fibonacci_aux (n - 1) (curr) (prev + curr);
+
+fun fibonacci n =
+    fibonacci_aux n 0 1;
 \end{lstlisting}
 
 \section{}
